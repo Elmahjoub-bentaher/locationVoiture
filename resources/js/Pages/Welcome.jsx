@@ -1,16 +1,43 @@
-import { Link, Head } from '@inertiajs/react';
+// import { Link, Head } from "@inertiajs/react";
+import Header from "@/Layouts/components/header";
+import "../../css/app.css";
+import Landing from "@/Layouts/components/landing";
+import Categories from "@/Layouts/components/categories";
+import Features from "@/Layouts/components/features";
+import About from "@/Layouts/components/about";
+import Discount from "@/Layouts/components/discount";
+import Contact from "@/Layouts/components/contact";
+import QuickLinks from "@/Layouts/components/quickLinks";
+import Footer from "@/Layouts/components/footer";
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
-    const handleImageError = () => {
-        document.getElementById('screenshot-container')?.classList.add('!hidden');
-        document.getElementById('docs-card')?.classList.add('!row-span-1');
-        document.getElementById('docs-card-content')?.classList.add('!flex-row');
-        document.getElementById('background')?.classList.add('!hidden');
-    };
+export default function Welcome() {
+    // const handleImageError = () => {
+    //     document
+    //         .getElementById("screenshot-container")
+    //         ?.classList.add("!hidden");
+    //     document.getElementById("docs-card")?.classList.add("!row-span-1");
+    //     document
+    //         .getElementById("docs-card-content")
+    //         ?.classList.add("!flex-row");
+    //     document.getElementById("background")?.classList.add("!hidden");
+    // };
 
     return (
         <>
-            <Head title="Welcome" />
+            <Header />
+            <main>
+                <Landing />
+                <Categories />
+                <Features />
+                <About />
+                <Discount />
+                <Contact />
+                <QuickLinks />
+            </main>
+            <footer className="text-center py-4">
+                <Footer />
+            </footer>
+            {/* <Head title="Welcome" />
             <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
                 <img
                     id="background"
@@ -333,7 +360,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </footer>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     );
 }
