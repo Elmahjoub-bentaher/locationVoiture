@@ -9,8 +9,9 @@ import Discount from "@/Layouts/components/discount";
 import Contact from "@/Layouts/components/contact";
 import QuickLinks from "@/Layouts/components/quickLinks";
 import Footer from "@/Layouts/components/footer";
+import { usePage } from "@inertiajs/react";
 
-export default function Welcome() {
+export default function Welcome({ Children }) {
     // const handleImageError = () => {
     //     document
     //         .getElementById("screenshot-container")
@@ -22,13 +23,16 @@ export default function Welcome() {
     //     document.getElementById("background")?.classList.add("!hidden");
     // };
 
+ 
+
     return (
         <>
             <Header />
             <main>
                 <Landing />
                 <Categories />
-                <Features />
+                <Features voitures={usePage().props.voitures} />
+                {Children}
                 <About />
                 <Discount />
                 <Contact />

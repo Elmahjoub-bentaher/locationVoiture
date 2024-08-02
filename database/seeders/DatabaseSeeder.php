@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Voiture;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,7 +19,12 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 't@example.com',
+            'numéro_de_téléphone' => '00000000',
+            'adresse' => 'agadir',
+            'date_de_naissance' => Carbon::now(),
+            'numéro_de_permis_de_conduire' => 'dsdjjjfjvjdfdf',
         ]);
+        // Voiture::factory(6)->create();
     }
 }

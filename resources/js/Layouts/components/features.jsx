@@ -6,8 +6,10 @@ import hightLander from "/storage/app/public/imgs/2016_toyota_highlander.webp";
 import octavia from "/storage/app/public/imgs/skoda_octavia.webp";
 import mitsu from "/storage/app/public/imgs/2016-mitsubishi-outlander-sport-es-suv.avif";
 import civic from "/storage/app/public/imgs/honda Civic.webp";
+import { Link } from "@inertiajs/react";
 
-function Features() {
+function Features({voitures}) {
+    console.log(voitures);
     return (
         <section className="features pt-12">
             <div className="container">
@@ -88,142 +90,39 @@ function Features() {
                             <a href="">Book now</a>
                         </button>
                     </div>
-                    <div className="box">
-                        <div className="img">
-                            <img src={duster} alt="duster" />
-                        </div>
-                        <p className="title">
-                            <span>Dacia Duster</span>
-                            <span>$15/day</span>
-                        </p>
-                        <div className="car_details grid grid-cols-3">
-                            <div className="card">
-                                <p>Transmission</p>
-                                <p>Automatic</p>
+                    {voitures && (
+                        <>
+                        {voitures?.map(voiture => (
+                            <div key={voiture.id} className="box">
+                                <div className="img">
+                                    <img src={`storage/${voiture.voiture_image}`} alt="duster" />
+                                </div>
+                                <p className="title">
+                                    <span>{voiture.marque} {voiture.modèle}</span>
+                                    <span>{voiture.tarif_de_location_quotidien} MAD/day</span>
+                                </p>
+                                <div className="car_details grid grid-cols-3">
+                                    <div className="card">
+                                        <p>Transmission</p>
+                                        <p>Automatic</p>
+                                    </div>
+                                    <div className="card">
+                                        <p>Fuel</p>
+                                        <p>Petrol</p>
+                                    </div>
+                                    <div className="card">
+                                        <p>Passenger</p>
+                                        <p>4 persons</p>
+                                    </div>
+                                </div>
+                                <button>
+                                    <Link href={route("reservation", voiture)}>Book now</Link>
+                                </button>
                             </div>
-                            <div className="card">
-                                <p>Fuel</p>
-                                <p>Petrol</p>
-                            </div>
-                            <div className="card">
-                                <p>Passenger</p>
-                                <p>4 persons</p>
-                            </div>
-                        </div>
-                        <button>
-                            <a href="">Book now</a>
-                        </button>
-                    </div>
-                    <div className="box">
-                        <div className="img">
-                            <img
-                                src={hightLander}
-                                alt="2016_toyota_highlander"
-                            />
-                        </div>
-                        <p className="title">
-                            <span>Toyota Highlander</span>
-                            <span>$20/day</span>
-                        </p>
-                        <div className="car_details grid grid-cols-3">
-                            <div className="card">
-                                <p>Transmission</p>
-                                <p>Automatic</p>
-                            </div>
-                            <div className="card">
-                                <p>Fuel</p>
-                                <p>Petrol</p>
-                            </div>
-                            <div className="card">
-                                <p>Passenger</p>
-                                <p>4 persons</p>
-                            </div>
-                        </div>
-                        <button>
-                            <a href="">Book now</a>
-                        </button>
-                    </div>
-                    <div className="box">
-                        <div className="img">
-                            <img src={octavia} alt="skoda_octavia" />
-                        </div>
-                        <p className="title">
-                            <span>Skoda Octavia</span>
-                            <span>$24/day</span>
-                        </p>
-                        <div className="car_details grid grid-cols-3">
-                            <div className="card">
-                                <p>Transmission</p>
-                                <p>Automatic</p>
-                            </div>
-                            <div className="card">
-                                <p>Fuel</p>
-                                <p>Petrol</p>
-                            </div>
-                            <div className="card">
-                                <p>Passenger</p>
-                                <p>4 persons</p>
-                            </div>
-                        </div>
-                        <button>
-                            <a href="">Book now</a>
-                        </button>
-                    </div>
-                    <div className="box">
-                        <div className="img">
-                            <img
-                                src={mitsu}
-                                alt="2016-mitsubishi-outlander-sport-es-suv"
-                            />
-                        </div>
-                        <p className="title">
-                            <span>Mitsubishi Outlander</span>
-                            <span>$28/day</span>
-                        </p>
-                        <div className="car_details grid grid-cols-3">
-                            <div className="card">
-                                <p>Transmission</p>
-                                <p>Automatic</p>
-                            </div>
-                            <div className="card">
-                                <p>Fuel</p>
-                                <p>Petrol</p>
-                            </div>
-                            <div className="card">
-                                <p>Passenger</p>
-                                <p>4 persons</p>
-                            </div>
-                        </div>
-                        <button>
-                            <a href="">Book now</a>
-                        </button>
-                    </div>
-                    <div className="box">
-                        <div className="img">
-                            <img src={civic} alt="honda Civic" />
-                        </div>
-                        <p className="title">
-                            <span>Honda Civic</span>
-                            <span>$23/day</span>
-                        </p>
-                        <div className="car_details grid grid-cols-3">
-                            <div className="card">
-                                <p>Transmission</p>
-                                <p>Automatic</p>
-                            </div>
-                            <div className="card">
-                                <p>Fuel</p>
-                                <p>Petrol</p>
-                            </div>
-                            <div className="card">
-                                <p>Passenger</p>
-                                <p>4 persons</p>
-                            </div>
-                        </div>
-                        <button>
-                            <a href="">Book now</a>
-                        </button>
-                    </div>
+                        ))}
+                        </>
+                    )}
+                    
                 </div>
                 <div className="view_more">
                     <a href="">
