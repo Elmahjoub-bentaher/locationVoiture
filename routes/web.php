@@ -13,6 +13,12 @@ Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/{voiture}', [MainController::class, 'homeReservation'])->name('reservation');
 Route::post('/reservation/store', [MainController::class, 'store'])->name('reservation.store');
 
+Route::get('/nari/pdf', [MainController::class, 'pdf'])->name('pdf');
+
+Route::get('/hi/test', function () {
+    return "Test route working!";
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

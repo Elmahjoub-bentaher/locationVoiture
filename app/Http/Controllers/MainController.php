@@ -99,4 +99,7 @@ class MainController extends Controller
             return ;
         }
     }
+    public function pdf() {
+        return view('reservation.pdf');
+    }
 }
