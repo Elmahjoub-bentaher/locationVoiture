@@ -25,6 +25,6 @@ class DatabaseSeeder extends Seeder
             'date_de_naissance' => Carbon::now(),
             'numéro_de_permis_de_conduire' => 'dsdjjjfjvjdfdf',
         ]);
-        // Voiture::factory(6)->create();
+        Voiture::factory(6)->create();
     }
 }

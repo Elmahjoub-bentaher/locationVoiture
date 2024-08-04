@@ -23,4 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::get('/reservation/reserved-car', [MainController::class, 'reservedCar'])->name('reservedCar');
+
+require __DIR__ . '/auth.php';

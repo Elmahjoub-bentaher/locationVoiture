@@ -23,6 +23,7 @@ export default {
             x_l_a: { max: "1280px" },
             xx_l_i: { min: "1536px" },
             xx_l_a: { max: "1536px" },
+            tablet: { max: "1024px", min: "768px" },
         },
         extend: {
             colors: {
@@ -41,5 +42,5 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [forms, require("daisyui")],
 };
