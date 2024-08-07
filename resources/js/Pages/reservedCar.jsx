@@ -1,11 +1,21 @@
 import Footer from "@/Layouts/components/footer";
 import Header from "@/Layouts/components/header";
-import React from "react";
+
+import React, { useState } from "react";
+
+import { Link } from "@inertiajs/react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGasPump, faGears, faUser } from "@fortawesome/free-solid-svg-icons";
+
 import honda from "/storage/app/public/imgs/2016_honda_cr_v.jpg";
 
 const ReservedCar = () => {
+    const [selected, setSelected] = useState(null);
+
+    const handleSelect = (event) => {
+        setSelected(event.target.value);
+    };
     return (
         <>
             <Header />
@@ -15,7 +25,7 @@ const ReservedCar = () => {
                         <h1 className="text-3xl my-5 text-center">
                             Which vehicule do you want to drive?
                         </h1>
-                        <div className="cars-filter flex gap-3 items-center flex-wrap overflow-hidden">
+                        <div className="cars-filter flex gap-3 items-center flex-wrap">
                             <h2 className="font-bold text-xl">filters:</h2>
                             <div className="filter-content flex gap-3 flex-wrap">
                                 <div className="filter-box">
@@ -25,17 +35,35 @@ const ReservedCar = () => {
                                             role="button"
                                             className="btn m-1 w-[100px] rounded-[30px] border-[#aaaaaa45]"
                                         >
-                                            marque
+                                            {!selected ? "filter 1" : selected}
                                         </div>
                                         <ul
                                             tabIndex={0}
-                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-52 p-2 shadow"
+                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-fit p-2 shadow"
                                         >
                                             <li>
-                                                <a>Item 1</a>
+                                                <button
+                                                    onClick={handleSelect}
+                                                    value="Option 1"
+                                                >
+                                                    Option 1
+                                                </button>
                                             </li>
                                             <li>
-                                                <a>Item 2</a>
+                                                <button
+                                                    onClick={handleSelect}
+                                                    value="Option 2"
+                                                >
+                                                    Option 2
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button
+                                                    onClick={handleSelect}
+                                                    value="Option 3"
+                                                >
+                                                    Option 3
+                                                </button>
                                             </li>
                                         </ul>
                                     </div>
@@ -51,7 +79,7 @@ const ReservedCar = () => {
                                         </div>
                                         <ul
                                             tabIndex={0}
-                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-52 p-2 shadow"
+                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-fit p-2 shadow"
                                         >
                                             <li>
                                                 <a>Item 1</a>
@@ -73,13 +101,13 @@ const ReservedCar = () => {
                                         </div>
                                         <ul
                                             tabIndex={0}
-                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-52 p-2 shadow"
+                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-fit p-2 shadow"
                                         >
                                             <li>
-                                                <a>Item 1</a>
+                                                <a>2004</a>
                                             </li>
                                             <li>
-                                                <a>Item 2</a>
+                                                <a>2020</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -95,7 +123,7 @@ const ReservedCar = () => {
                                         </div>
                                         <ul
                                             tabIndex={0}
-                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-52 p-2 shadow"
+                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-fit p-2 shadow"
                                         >
                                             <li>
                                                 <a>Item 1</a>
@@ -117,7 +145,7 @@ const ReservedCar = () => {
                                         </div>
                                         <ul
                                             tabIndex={0}
-                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-52 p-2 shadow"
+                                            className="dropdown-content menu bg-[#f4f4f9] rounded-box z-[1] top-14 border border-[#000] w-fit p-2 shadow"
                                         >
                                             <li>
                                                 <a>Item 1</a>
@@ -165,12 +193,17 @@ const ReservedCar = () => {
                                         1000 total
                                     </span>
                                 </div>
+                                <Link href={route("booking")}>
+                                    <button className="booking bg-primary-color w-full p-3 rounded-md mt-6 mb-4">
+                                        Book now
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </section>
             </main>
-            <footer className="text-center py-4">
+            <footer className="text-center py-4 bg-[#ddd] mt-5">
                 <Footer />
             </footer>
         </>
