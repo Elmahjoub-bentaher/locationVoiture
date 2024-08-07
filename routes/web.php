@@ -6,9 +6,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome');
-// });
+Route::get('/date/picker', function () {
+    return Inertia::render('datePicker');
+});
+
 Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/{voiture}', [MainController::class, 'homeReservation'])->name('reservation');
 Route::post('/reservation/store', [MainController::class, 'store'])->name('reservation.store');
@@ -24,5 +25,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/reservation/reserved-car', [MainController::class, 'reservedCar'])->name('reservedCar');
+// Route::get('/date/picker', [MainController::class, 'datePicker'])->name('datePicker');
+Route::get('/reservation/booking', function () {
+    return Inertia::render('booking');
+})->name('booking');
+
+Route::get('/pdf/pdf', function () {
+    return view('reservation.pdf');
+})->name('pdf');
 
 require __DIR__ . '/auth.php';
