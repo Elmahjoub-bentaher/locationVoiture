@@ -41,6 +41,10 @@ export default {
             },
         },
     },
+<<<<<<< HEAD
 
     plugins: [forms, daisyui],
+=======
+    plugins: [forms, require("daisyui")],
+>>>>>>> 8e4c2f2b9764d9652f32835ecbe269013c121e4f
 };
