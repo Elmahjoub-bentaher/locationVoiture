@@ -27,4 +27,8 @@ class Voiture extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+    public function getImageUrlAttribute()
+    {
+        return asset('storage/' . $this->voiture_image);
+    }
 }

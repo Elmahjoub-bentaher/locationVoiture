@@ -28,16 +28,18 @@ export default function Welcome({ Children }) {
     return (
         <>
             <Header />
+            {!Children && (
             <main>
                 <Landing />
                 <Categories />
-                <Features voitures={usePage().props.voitures} />
-                {Children}
+                {/* <Features voitures={usePage().props.voitures} />   */}
                 <About />
                 <Discount />
                 <Contact />
                 <QuickLinks />
             </main>
+            )}
+            {Children}
             <footer className="text-center py-4">
                 <Footer />
             </footer>

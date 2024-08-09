@@ -9,6 +9,11 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Log;
 use Spatie\Browsershot\Browsershot;
 use TCPDF;
+use Inertia\Response;
+use Illuminate\Http\RedirectResponse;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cache;
 
 class MainController extends Controller
 {
@@ -104,8 +109,32 @@ class MainController extends Controller
         return view('reservation.pdf');
     }
 
-    public function reservedCar()
+    public function reservedCar(Request $request)
     {
-        return Inertia::render('reservedCar');
+        Log::info('Incoming reservation request data:', $request->all());
+        $startDate = Carbon::parse($request->input('start_date'));
+        $endDate = Carbon::parse($request->input('end_date'));
+        $hi = [$startDate, $endDate];
+        Log::info('date changed format:', $hi );
+
+        $reservedVoitureIds = Reservation::where('date_de_fin_de_réservation','>', $startDate)
+                                    ->where('statut', '=', 'Confirmed')
+                                    ->distinct()
+                                    ->pluck('voiture_id');
+        // dump($reservedVoitureIds);
+        $availableVoitures = Voiture::whereNotIn('id', $reservedVoitureIds)->where('statut', '=', 'Available')->get();
+        Log::info('here is the query', $availableVoitures->toArray());
+        $availableVoituresArray = $availableVoitures->map(function ($voiture) {
+            $voiture->voiture_image = asset('storage/' . $voiture->voiture_image);
+            return $voiture;
+        })->toArray();
+
+        // Session::flash('availableVoitures', $availableVoitures);
+        Cache::put('availableVoitures', $availableVoitures->toArray(), now()->addMinutes(10));
+        Cache::put('startDate', $startDate, now()->addMinutes(10));
+        Cache::put('endDate', $endDate, now()->addMinutes(10));
+
+        return redirect()->route('success');
     }
+   
 }

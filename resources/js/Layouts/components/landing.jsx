@@ -1,9 +1,45 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import landing from "/storage/app/public/imgs/landing.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Link, router } from "@inertiajs/react";
+import { Inertia } from '@inertiajs/inertia';
+
 
 function Landing() {
+    const dateSt = useRef();
+    const dateFl = useRef();
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const start = dateSt.current.value;
+        const end = dateFl.current.value;
+        if (start && end) {
+            const startDate = new Date(dateSt.current.value);
+            const endDate = new Date(dateFl.current.value);
+            if (startDate >= endDate) {
+                alert("End date must be later than start date.");
+            } else {
+                console.log("Form submitted with valid dates:", start, end);
+                const formData = {
+                    start_date: start,
+                    end_date: end,
+                };
+                
+            try {
+                const response = router.post(route("reservedCar"), formData );
+                
+                // Inertia.visit(route('success'));
+            } catch (error) {
+                console.error("Error:", error);
+            }
+            }
+        } else {
+            alert("choose a valid date range!");
+        }
+    };
+
     return (
         <>
             <section className="landing relative">
@@ -27,32 +63,38 @@ function Landing() {
                         </p>
                     </div>
                     <form
-                        action=""
-                        method="post"
+                        onSubmit={handleSubmit}
                         className="my-10 relative w-fit mx-auto"
                     >
                         <div className="input flex justify-center m_a:flex-col md:flex-row">
                             <input
-                                type="text"
+                                ref={dateSt}
+                                type="datetime-local"
                                 placeholder="Search cars, accessories and more..."
                             />
-                            <input type="text" placeholder="Select location" />
+                            <input
+                                ref={dateFl}
+                                type="datetime-local"
+                                placeholder="Select location"
+                            />
                         </div>
-                        <span className="absolute right-5 top-1/2 -translate-y-1/2">
-                            <button
-                                className="p-1 w-9 h-9 rounded-full hover:bg-red-500"
-                                type="submit"
-                                style={{
-                                    fontFamily: "FontAwesome",
-                                    cursor: "pointer",
-                                    transition: "var(--transition)",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <FontAwesomeIcon icon={faSearch} />
-                            </button>
+                        <span className="absolute left-full top-1/2 -translate-y-1/2 w-fit">
+                            {/* <Link href="/hi/hi" method="post" data={formData} preserveState> */}
+                                <button
+                                    className="p-1 w-9 h-9 rounded-full bg-red-500"
+                                    // type="submit"
+                                    style={{
+                                        fontFamily: "FontAwesome",
+                                        cursor: "pointer",
+                                        transition: "var(--transition)",
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </button>
+                            {/* </Link> */}
                         </span>
                     </form>
                 </div>

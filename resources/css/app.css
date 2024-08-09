@@ -11,6 +11,11 @@
     scrollbar-color: unset;
 }
 
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
 *:hover {
     scrollbar-color: unset;
 }
@@ -81,7 +86,7 @@ a {
     }
 }
 
-input {
+.landing input {
     outline: none;
     background-color: var(--white) !important;
 }
@@ -336,8 +341,9 @@ main .landing .container form .input input:last-of-type {
     }
 
     main .landing .container form span {
-        top: 75%;
-        transform: translateY(-10px);
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 10px);
     }
 }
 
