@@ -3,13 +3,11 @@ import landing from "/storage/app/public/imgs/landing.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { Link, router } from "@inertiajs/react";
-import { Inertia } from '@inertiajs/inertia';
-
+// import { Inertia } from '@inertiajs/inertia';
 
 function Landing() {
     const dateSt = useRef();
     const dateFl = useRef();
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,14 +24,17 @@ function Landing() {
                     start_date: start,
                     end_date: end,
                 };
-                
-            try {
-                const response = router.post(route("reservedCar"), formData );
-                
-                // Inertia.visit(route('success'));
-            } catch (error) {
-                console.error("Error:", error);
-            }
+
+                try {
+                    const response = router.post(
+                        route("reservedCar"),
+                        formData
+                    );
+
+                    // Inertia.visit(route('success'));
+                } catch (error) {
+                    console.error("Error:", error);
+                }
             }
         } else {
             alert("choose a valid date range!");
@@ -80,20 +81,20 @@ function Landing() {
                         </div>
                         <span className="absolute left-full top-1/2 -translate-y-1/2 w-fit">
                             {/* <Link href="/hi/hi" method="post" data={formData} preserveState> */}
-                                <button
-                                    className="p-1 w-9 h-9 rounded-full bg-red-500"
-                                    // type="submit"
-                                    style={{
-                                        fontFamily: "FontAwesome",
-                                        cursor: "pointer",
-                                        transition: "var(--transition)",
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <FontAwesomeIcon icon={faSearch} />
-                                </button>
+                            <button
+                                className="p-1 w-9 h-9 rounded-full bg-red-500"
+                                // type="submit"
+                                style={{
+                                    fontFamily: "FontAwesome",
+                                    cursor: "pointer",
+                                    transition: "var(--transition)",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <FontAwesomeIcon icon={faSearch} />
+                            </button>
                             {/* </Link> */}
                         </span>
                     </form>

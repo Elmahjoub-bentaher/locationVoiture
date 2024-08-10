@@ -24,10 +24,7 @@
         "@fortawesome/free-regular-svg-icons": "^6.6.0",
         "@fortawesome/free-solid-svg-icons": "^6.6.0",
         "@fortawesome/react-fontawesome": "^0.2.2",
-<<<<<<< HEAD
         "@inertiajs/inertia-react": "^0.8.1",
-=======
->>>>>>> 8e4c2f2b9764d9652f32835ecbe269013c121e4f
         "daisyui": "^4.12.10",
         "fortawesome": "^0.0.1-security",
         "puppeteer": "^22.15.0"
