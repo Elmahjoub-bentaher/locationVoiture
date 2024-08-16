@@ -17,14 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 't@example.com',
-            'numéro_de_téléphone' => '00000000',
-            'adresse' => 'agadir',
-            'date_de_naissance' => Carbon::now(),
-            'numéro_de_permis_de_conduire' => 'dsdjjjfjvjdfdf',
-        ]);
-        Voiture::factory(6)->create();
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 't@example.com',
+        //     'numéro_de_téléphone' => '00000000',
+        //     'adresse' => 'agadir',
+        //     'date_de_naissance' => Carbon::now(),
+        //     'numéro_de_permis_de_conduire' => 'dsdjjjfjvjdfdf',
+        // ]);
+        Voiture::factory(10)->create();
     }
 }

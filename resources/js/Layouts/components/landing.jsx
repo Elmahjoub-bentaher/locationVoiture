@@ -70,12 +70,12 @@ function Landing() {
                         <div className="input flex justify-center m_a:flex-col md:flex-row">
                             <input
                                 ref={dateSt}
-                                type="datetime-local"
+                                type="date"
                                 placeholder="Search cars, accessories and more..."
                             />
                             <input
                                 ref={dateFl}
-                                type="datetime-local"
+                                type="date"
                                 placeholder="Select location"
                             />
                         </div>
