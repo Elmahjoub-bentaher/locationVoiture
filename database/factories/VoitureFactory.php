@@ -25,7 +25,8 @@ class VoitureFactory extends Factory
             'vin' => strtoupper($this->faker->bothify('??######??######')),
             'couleur' => $this->faker->safeColorName,
             'kilométrage' => $this->faker->numberBetween(5000, 200000),
-            'statut' => $this->faker->randomElement(['Available', 'Rented', 'Maintenance']),
+            // 'statut' => $this->faker->randomElement(['Available', 'Rented', 'Maintenance']),
+            'statut' => 'Available',
             'tarif_de_location_quotidien' => $this->faker->randomFloat(2, 50, 500),
         ];
     }

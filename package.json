@@ -27,6 +27,7 @@
         "@inertiajs/inertia-react": "^0.8.1",
         "daisyui": "^4.12.10",
         "fortawesome": "^0.0.1-security",
+        "inertiajs": "^0.0.0",
         "puppeteer": "^22.15.0"
     }
 }
